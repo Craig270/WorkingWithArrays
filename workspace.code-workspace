@@ -6,5 +6,8 @@
     {
       "path": "..\\final"
     }
-  ]
+  ],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "starter"
+  }
 }
