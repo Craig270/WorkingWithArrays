@@ -108,3 +108,26 @@ movements.forEach(function (movement) {
     console.log(`You took out ${Math.abs(movement)}`);
   }
 });
+
+const jDataOne = [3, 5, 2, 12, 7];
+const kDataOne = [4, 1, 15, 8, 3];
+const jDataTwo = [9, 16, 6, 8, 3];
+const kDataTwo = [10, 5, 6, 1, 4];
+
+let jDataNewOne = jDataOne.slice(1, -1);
+
+console.log(jDataNewOne);
+
+/* console.log(jDataOne.slice(1, -1)) */
+
+function checkDogs(dogsJulia, dogsKate) {
+  let noCats = dogsJulia.slice(1, -1);
+  let allData = noCats.concat(dogsKate);
+  allData.forEach(function (age, i) {
+    if (age >= 3) {
+      console.log(`Dog number ${i} is an adult and is ${age} years old`);
+    } else {
+      console.log(`Dog number ${i} is still a puppy`);
+    }
+  });
+}
