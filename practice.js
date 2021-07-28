@@ -27,7 +27,7 @@ console.log(jDataOne.slice(1, -1))
 */
 
 function checkDogs(dogsJulia, dogsKate) {
-  let noCats = dogsJulia.slice(1, -1);
+  let noCats = dogsJulia.slice(1, -2);
   let allData = noCats.concat(dogsKate);
   allData.forEach(function (age, i) {
     if (age >= 3) {

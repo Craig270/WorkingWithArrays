@@ -78,6 +78,20 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+
+function calcPrintBalance(movements) {}
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -90,6 +104,7 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+/*
 /////////////////////////////////////////////////
 //For of Loop
 for (const movement of movements) {
@@ -108,28 +123,49 @@ movements.forEach(function (movement) {
     console.log(`You took out ${Math.abs(movement)}`);
   }
 });
+*/
 
-const jDataOne = [3, 5, 2, 12, 7];
-const kDataOne = [4, 1, 15, 8, 3];
-const jDataTwo = [9, 16, 6, 8, 3];
-const kDataTwo = [10, 5, 6, 1, 4];
-/*
-let jDataNewOne = jDataOne.slice(1, -2);
+const user = 'Steven Thomas Williams'; //stw
 
-console.log(jDataNewOne);
+const eurToUsd = 1.1;
 
- console.log(jDataOne.slice(1, -1)) */
+const movementsUSD = movements.map(function (mov) {
+  return mov * eurToUsd;
+});
 
-function checkDogs(dogsJulia, dogsKate) {
-  let noCats = dogsJulia.slice(1, -2);
-  let allData = noCats.concat(dogsKate);
-  allData.forEach(function (age, i) {
-    if (age >= 3) {
-      console.log(`Dog number ${i} is an adult and is ${age} years old`);
-    } else {
-      console.log(`Dog number ${i} is still a puppy`);
-    }
-  });
+const arrowMovements = movements.map(mov => mov * eurToUsd);
+
+// console.log(movements);
+// console.log(movementsUSD);
+// console.log(arrowMovements);
+const movementsUSDfor = [];
+for (const mov of movements) {
+  movementsUSDfor.push(mov * eurToUsd);
 }
-checkDogs(jDataOne, kDataOne);
-checkDogs(jDataTwo, kDataTwo);
+
+// console.log(movementsUSDfor);
+const movementsDes = movements.map((mov, i, arr) => {
+  if (mov > 0) {
+    return `Movement ${i + 1}: You deposited ${mov}`;
+  } else {
+    return `Movement ${i + 1}: You took out ${Math.abs(mov)}`;
+  }
+});
+// console.log(movementsDes);
+
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+
+// console.log(deposits);
+
+const withdrawlss = movements.filter(mov => mov < 0);
+// console.log(withdrawlss);
+
+console.log(movements);
+
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Loop #${i} -- Current value: ${acc}`);
+  return acc + cur;
+}, 0);
+console.log(balance);
